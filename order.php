@@ -52,24 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 
-    <header class="bg-dark text-white py-3">
-        <div class="container d-flex justify-content-between align-items-center">
-        <div class="logo">
-                <h1 class="h3">
-                    <img src="https://img.freepik.com/premium-vector/mobile-phone-repair-logo-design_361135-92.jpg?w=996" 
-                         alt="شعار الموقع" 
-                         class="logo" 
-                         style="width: 80px; height: auto;"> <!-- تعديل الحجم هنا -->
-                </h1>
-            </div>
-            <nav>
-                <ul class="nav">
-                    <li class="nav-item"><a href="home.html" class="nav-link text-white">الرئيسية</a></li>
-
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <?php include 'header.html'?>
 
     <section class="hero text-center text-white">
         <div class="container">
@@ -133,10 +116,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="issue" class="form-label">تفاصيل المشكلة</label>
                     <textarea class="form-control" id="issue" name="issue" rows="4" placeholder="أدخل وصفًا للمشكلة التي تواجهها" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary btn-lg custom-btn w-100">إرسال الطلب</button>
+                <input type="submit" name="submit" value="send">
             </form>
         </div>
     </section>
+
+    <?php include 'conn';
+    
+    
+    
+    ?>
 
     <footer class="bg-dark text-white text-center py-3">
         <div class="container">
