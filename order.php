@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="ar">
 <head>
+<link rel="stylesheet" href="test.css">                                                                         
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>احجز طلب الصيانة</title>
@@ -53,8 +54,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <header class="bg-dark text-white py-3">
         <div class="container d-flex justify-content-between align-items-center">
-            <div class="logo">
-                <h1 class="h3">شعار الشركة</h1>
+        <div class="logo">
+                <h1 class="h3">
+                    <img src="https://img.freepik.com/premium-vector/mobile-phone-repair-logo-design_361135-92.jpg?w=996" 
+                         alt="شعار الموقع" 
+                         class="logo" 
+                         style="width: 80px; height: auto;"> <!-- تعديل الحجم هنا -->
+                </h1>
             </div>
             <nav>
                 <ul class="nav">
@@ -77,20 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <h2 class="text-center mb-4">نموذج حجز الخدمة</h2>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="p-4 border rounded shadow-sm">
                 <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="name" class="form-label">الاسم الكامل</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="أدخل اسمك الكامل" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="phone" class="form-label">رقم الهاتف</label>
-                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="أدخل رقم هاتفك" required>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="email" class="form-label">البريد الإلكتروني</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="أدخل بريدك الإلكتروني" required>
-                    </div>
+                 
                     <div class="col-md-6">
                         <label for="device-brand" class="form-label">ماركة الجهاز</label>
                         <select class="form-select" id="device-brand" name="device_brand" required>
