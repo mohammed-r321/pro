@@ -14,24 +14,7 @@
 <body>
 
     <!-- الهيدر -->
-    <header class="bg-dark text-white py-3">
-        <div class="container d-flex justify-content-between align-items-center">
-            <div class="logo">
-                <h1 class="h3">
-                    <img src="https://img.freepik.com/premium-vector/mobile-phone-repair-logo-design_361135-92.jpg?w=996" 
-                         alt="شعار الموقع" 
-                         class="logo" 
-                         style="width: 80px; height: auto;"> <!-- تعديل الحجم هنا -->
-                </h1>
-            </div>
-            <nav>
-                <ul class="nav">
-                    <li class="nav-item"><a href="#" class="nav-link text-white">الرئيسية</a></li>
-                    <a href="order.php" class="btn btn-primary btn-lg custom-btn">احجز الآن</a>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <?php include 'header.php'?>
 
     <!-- باقي الصفحة -->
     <!-- قسم البطل (Hero Section) -->
@@ -98,7 +81,7 @@
     <!-- الفوتر -->
     <footer class="bg-dark text-white text-center py-3">
         <div class="container">
-            <p>شاكرين لزيرتكم</p>
+            <p>شاكرين لزيارتكم</p>
         </div>
     </footer>
 

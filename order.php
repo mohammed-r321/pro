@@ -1,22 +1,51 @@
 <?php
 // معالجة النموذج عند الإرسال
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars($_POST['name']);
-    $phone = htmlspecialchars($_POST['phone']);
-    $email = htmlspecialchars($_POST['email']);
-    $device_brand = htmlspecialchars($_POST['device_brand']);
-    $device_type = htmlspecialchars($_POST['device_type']);
-    $issue_type = htmlspecialchars($_POST['issue_type']);
-    $issue = htmlspecialchars($_POST['issue']);
+$ms1 = $ms2 = $ms3 = $ms4 = $ms5 = $ms6 = $ms7 = "";
+if (isset($_POST["submit"])) {
 
-    echo "<div class='alert alert-success text-center'>تم إرسال الطلب بنجاح!</div>";
+    if ($_POST['device_brand'] == '') {
+        $ms1 = 'device brand is required';
+    }
+
+    if ($_POST['device_type'] == '') {
+        $ms2 = 'device type is required';
+    }
+
+    if ($_POST['issue_type'] == '') {
+        $ms6 = 'issue type is required';
+    }
+    
+    if (empty($_POST['issue'])) {
+        $ms7 = 'issue description is required';
+    }
+
+    if ($ms1 == "" && $ms2 == "" && $ms3 == "" && $ms4 == "" && $ms5 == "" && $ms6 == "" && $ms7 == "") {
+
+        include 'conn.php';
+        $device_brand = $_POST['device_brand'];
+        $device_type = $_POST['device_type'];
+        $issue_type = $_POST['issue_type'];
+        $issue = $_POST['issue'];
+
+        $sql = "insert into orders (brand,phone,dsc_type,dsc,cnum) values('$device_brand','$device_type','$issue_type','$issue')";
+        if (mysqli_query($conn, $sql)) {
+            echo "تم ارسال طلبك بنجاح";
+        }
+
+        else {
+            echo "error";
+        }
+
+        mysqli_close($conn);
+    }
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="ar">
+
 <head>
-<link rel="stylesheet" href="test.css">                                                                         
+    <link rel="stylesheet" href="test.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>احجز طلب الصيانة</title>
@@ -25,23 +54,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         body {
             background-color: #f5f5f5;
         }
+
         .booking-form {
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             padding: 30px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
+
         .form-label {
             font-weight: bold;
         }
+
         .custom-btn {
             background-color: #007bff;
             border-color: #007bff;
             transition: background-color 0.3s ease;
         }
+
         .custom-btn:hover {
             background-color: #0056b3;
         }
+
         .hero {
             background-image: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 123, 255, 0.8)), url('path/to/your/image.jpg');
             background-size: cover;
@@ -50,9 +84,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     </style>
 </head>
+
 <body>
 
-    <?php include 'header.html'?>
+    <?php include 'header.php' ?>
 
     <section class="hero text-center text-white">
         <div class="container">
@@ -64,9 +99,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <section class="booking-form py-5">
         <div class="container">
             <h2 class="text-center mb-4">نموذج حجز الخدمة</h2>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="p-4 border rounded shadow-sm">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST"
+                class="p-4 border rounded shadow-sm">
                 <div class="row mb-3">
-                 
+
                     <div class="col-md-6">
                         <label for="device-brand" class="form-label">ماركة الجهاز</label>
                         <select class="form-select" id="device-brand" name="device_brand" required>
@@ -114,18 +150,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="mb-3">
                     <label for="issue" class="form-label">تفاصيل المشكلة</label>
-                    <textarea class="form-control" id="issue" name="issue" rows="4" placeholder="أدخل وصفًا للمشكلة التي تواجهها" required></textarea>
+                    <textarea class="form-control" id="issue" name="issue" rows="4"
+                        placeholder="أدخل وصفًا للمشكلة التي تواجهها" required></textarea>
                 </div>
                 <input type="submit" name="submit" value="send">
             </form>
         </div>
     </section>
 
-    <?php include 'conn';
-    
-    
-    
-    ?>
 
     <footer class="bg-dark text-white text-center py-3">
         <div class="container">
@@ -135,4 +167,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

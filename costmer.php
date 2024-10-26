@@ -12,19 +12,7 @@
 <body>
 
     <!-- الهيدر -->
-    <header class="bg-dark text-white py-3">
-        <div class="container d-flex justify-content-between align-items-center">
-            <div class="logo">
-                <h1 class="h3">عرض الطلبات</h1>
-            </div>
-            <nav>
-                <ul class="nav">
-                    <li class="nav-item"><a href="home.html" class="nav-link text-white">الرئيسية</a></li>
-                    <li class="nav-item"><a href="order.php" class="nav-link text-white">احجز الآن</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <?php include 'header.php'?>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <!-- قسم عرض الطلبات -->
