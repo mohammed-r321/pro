@@ -1,33 +1,16 @@
 <?php
 // معالجة النموذج عند الإرسال
-$ms1 = $ms2 = $ms3 = $ms4 = $ms5 = $ms6 = $ms7 = "";
+session_start();
 if (isset($_POST["submit"])) {
-
-    if ($_POST['device_brand'] == '') {
-        $ms1 = 'device brand is required';
-    }
-
-    if ($_POST['device_type'] == '') {
-        $ms2 = 'device type is required';
-    }
-
-    if ($_POST['issue_type'] == '') {
-        $ms6 = 'issue type is required';
-    }
-    
-    if (empty($_POST['issue'])) {
-        $ms7 = 'issue description is required';
-    }
-
-    if ($ms1 == "" && $ms2 == "" && $ms3 == "" && $ms4 == "" && $ms5 == "" && $ms6 == "" && $ms7 == "") {
 
         include 'conn.php';
         $device_brand = $_POST['device_brand'];
         $device_type = $_POST['device_type'];
         $issue_type = $_POST['issue_type'];
         $issue = $_POST['issue'];
+        $cid = $_SESSION['uid'];
 
-        $sql = "insert into orders (brand,phone,dsc_type,dsc,cnum) values('$device_brand','$device_type','$issue_type','$issue')";
+        $sql = "insert into orders (brand,phone,dsc_type,dsc,cnum) values('$device_brand','$device_type','$issue_type','$issue','$cid')";
         if (mysqli_query($conn, $sql)) {
             echo "تم ارسال طلبك بنجاح";
         }
@@ -38,7 +21,7 @@ if (isset($_POST["submit"])) {
 
         mysqli_close($conn);
     }
-}
+
 ?>
 
 <!DOCTYPE html>
