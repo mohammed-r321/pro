@@ -1,6 +1,12 @@
 <?php
 // معالجة النموذج عند الإرسال
 session_start();
+
+if (!isset($_SESSION['uid'])) {
+    header('Location: login.php');
+    exit;
+}
+
 if (isset($_POST["submit"])) {
 
         include 'conn.php';

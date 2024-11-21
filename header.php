@@ -9,7 +9,14 @@
         </div>
         <nav class="ms-auto">
             <ul class="nav">
-                <li class="nav-item"><a href="home.html" class="nav-link text-white">الرئيسية</a></li>
+                <li class="nav-item"><a href="home.php" class="nav-link text-white">الرئيسية</a></li>
+                <?php
+                // تحقق من وجود جلسة مستخدم
+                
+                if (isset($_SESSION['uid'])) {
+                    echo '<li class="nav-item"><a href="logout.php" class="nav-link text-white">تسجيل الخروج</a></li>';
+                }
+                ?>
             </ul>
         </nav>
     </div>

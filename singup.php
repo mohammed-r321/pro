@@ -30,7 +30,7 @@
 
         if ($ms ==''){
             include 'conn.php';
-            $sql = "insert into users (name,email,phone_num,uname,password) values ('$name','$email','$phone','$uname','$pass1')";
+            $sql = "insert into users (name,email,phone_num,uname,password,level) values ('$name','$email','$phone','$uname','$pass1',0)";
             $query = mysqli_query($conn,$sql);
             if ($query){
                 $done = 'تم تسجيلك بنجاح';
