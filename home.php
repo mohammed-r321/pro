@@ -14,7 +14,7 @@
 <body>
 
     <!-- الهيدر -->
-    <?php include 'header.php'?>
+    <?php include 'header.php' ?>
 
     <!-- باقي الصفحة -->
     <!-- قسم البطل (Hero Section) -->
@@ -23,6 +23,8 @@
             <h2 class="display-4">إصلاح وصيانة جميع أنواع الأجهزة الذكية</h2>
             <p class="lead">نقدم خدمات عالية الجودة لإصلاح الهواتف الذكية، الأجهزة اللوحية والمزيد.</p>
             <a href="order.php" class="btn btn-primary btn-lg custom-btn">احجز الآن</a>
+            <!-- الزر الجديد -->
+            <a href="costmer.php" class="btn btn-secondary btn-lg custom-btn mt-3">عرض الطلبات</a>
         </div>
     </section>
 
@@ -88,4 +90,5 @@
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

@@ -1,3 +1,29 @@
+<?php
+session_start();
+include 'conn.php'; // الاتصال بقاعدة البيانات
+
+// التحقق من تسجيل الدخول
+if (!isset($_SESSION['uid']) || !isset($_SESSION['level'])) {
+    header('Location: login.php');
+    exit;
+}
+
+// جلب بيانات المستخدم من الجلسة
+$user_id = $_SESSION['uid'];
+$user_level = $_SESSION['level'];
+
+// استعلام لجلب الطلبات بناءً على مستوى المستخدم
+if ($user_level == 1) {
+    // المستخدم بمستوى 1 يرى جميع الطلبات
+    $sql = "SELECT * FROM orders";
+} else {
+    // المستخدم بمستوى 0 يرى طلباته فقط
+    $sql = "SELECT * FROM orders WHERE cnum = '$user_id'";
+}
+
+$query = mysqli_query($conn, $sql);
+?>
+
 <!DOCTYPE html>
 <html lang="ar">
 
@@ -15,9 +41,6 @@
 
     <!-- الهيدر -->
     <?php include 'header.php' ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
 
     <!-- قسم عرض الطلبات -->
     <section class="orders py-5">
@@ -35,37 +58,27 @@
                 </thead>
                 <tbody>
                     <?php
-                    include 'conn.php';
-
-                    // استعلام لجلب الطلبات من قاعدة البيانات
-                    $sql = "SELECT * FROM orders";
-                    $query = mysqli_query($conn, $sql);
-
                     if ($query) {
                         $row_num = mysqli_num_rows($query);
 
                         if ($row_num > 0) {
-                            while ($row = mysqli_fetch_assoc($query)) { // استخدام mysqli_fetch_assoc لعرض البيانات
+                            while ($row = mysqli_fetch_assoc($query)) {
                                 echo "<tr>
-                    <td>" . $row["onum"] . "</td>
-                    <td>" . $row["brand"] . "</td>
-                    <td>" . $row["phone"] . "</td>
-                    <td>" . $row["dsc_type"] . "</td>
-                    <td>" . $row["cnum"] . "</td>
-                </tr>";
+                                    <td>" . $row["onum"] . "</td>
+                                    <td>" . $row["brand"] . "</td>
+                                    <td>" . $row["phone"] . "</td>
+                                    <td>" . $row["dsc_type"] . "</td>
+                                    <td>" . $row["cnum"] . "</td>
+                                </tr>";
                             }
                         } else {
-                            echo "<tr><td colspan='6' class='text-center'>لا توجد طلبات.</td></tr>";
+                            echo "<tr><td colspan='5' class='text-center'>لا توجد طلبات.</td></tr>";
                         }
                     } else {
-                        echo "<tr><td colspan='6' class='text-center'>حدث خطأ أثناء جلب البيانات.</td></tr>";
+                        echo "<tr><td colspan='5' class='text-center'>حدث خطأ أثناء جلب البيانات.</td></tr>";
                     }
                     ?>
-
                 </tbody>
-            </table>
-
-
             </table>
         </div>
     </section>
