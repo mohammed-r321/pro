@@ -1,37 +1,15 @@
-<?php
-// معالجة النموذج عند الإرسال
-session_start();
 
+<!DOCTYPE html>
+<html lang="ar">
+    <?php
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
 if (!isset($_SESSION['uid'])) {
     header('Location: login.php');
     exit;
 }
-
-if (isset($_POST["submit"])) {
-
-        include 'conn.php';
-        $device_brand = $_POST['device_brand'];
-        $device_type = $_POST['device_type'];
-        $issue_type = $_POST['issue_type'];
-        $issue = $_POST['issue'];
-        $cid = $_SESSION['uid'];
-
-        $sql = "insert into orders (brand,phone,dsc_type,dsc,cnum) values('$device_brand','$device_type','$issue_type','$issue','$cid')";
-        if (mysqli_query($conn, $sql)) {
-            echo "تم ارسال طلبك بنجاح";
-        }
-
-        else {
-            echo "error";
-        }
-
-        mysqli_close($conn);
-    }
-
 ?>
-
-<!DOCTYPE html>
-<html lang="ar">
 
 <head>
     <link rel="stylesheet" href="test.css">
@@ -170,6 +148,35 @@ if (isset($_POST["submit"])) {
         </form>
     </div>
 </section>
+<?php
+// معالجة النموذج عند الإرسال
+
+
+if (isset($_POST["submit"])) {
+
+        include 'conn.php';
+        $device_brand = $_POST['device_brand'];
+        $device_type = $_POST['device_type'];
+        $issue_type = $_POST['issue_type'];
+        $issue = $_POST['issue'];
+        $cid = $_SESSION['uid'];
+
+        $sql = "insert into orders (brand,phone,dsc_type,dsc,cnum) values('$device_brand','$device_type','$issue_type','$issue','$cid')";
+        if (mysqli_query($conn, $sql)) {
+            echo '<div class="alert alert-success text-center mt-4" role="alert">تم إرسال طلبك بنجاح</div>';
+        }
+        
+        
+        
+
+        else {
+            echo "error";
+        }
+
+        mysqli_close($conn);
+    }
+
+?>
 
 <!-- الفوتر -->
 <footer class="bg-dark text-white text-center py-3">
