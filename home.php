@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar">
 
@@ -9,22 +10,68 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- ملف CSS المخصص -->
     <link rel="stylesheet" href="test.css">
+
+    <style>
+        header {
+            background-color: #343a40;
+        }
+
+        header .logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        header .logo span {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        header .nav-link {
+            color: white;
+            transition: color 0.3s;
+        }
+
+        header .nav-link:hover {
+            color: #ffcc00;
+        }
+    </style>
+    
 </head>
 
-<body>
+<body dir="rtl" class="bg-light">
 
     <!-- الهيدر -->
-    <?php include 'header.php' ?>
+    <?php include 'header.php'; ?>
+    <style>
+        .hero {
+            background-image: url('https://t3.ftcdn.net/jpg/05/19/73/36/360_F_519733648_tSMSHwqxw3TrbgFSXNKJVKncdkC0siTq.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    <!-- باقي الصفحة -->
+  
+    </style>
+
+
+
+
     <!-- قسم البطل (Hero Section) -->
-    <section class="hero text-center text-white py-5" style="background-color: #007bff;">
+    <section class="hero text-center text-white">
         <div class="container">
-            <h2 class="display-4">إصلاح وصيانة جميع أنواع الأجهزة الذكية</h2>
-            <p class="lead">نقدم خدمات عالية الجودة لإصلاح الهواتف الذكية، الأجهزة اللوحية والمزيد.</p>
-            <a href="order.php" class="btn btn-primary btn-lg custom-btn">احجز الآن</a>
-            <!-- الزر الجديد -->
-            <a href="costmer.php" class="btn btn-secondary btn-lg custom-btn mt-3">عرض الطلبات</a>
+            <h2 class="display-4 mb-4">إصلاح وصيانة جميع أنواع الأجهزة الذكية</h2>
+            <p class="lead mb-5">نقدم خدمات عالية الجودة لإصلاح الهواتف الذكية، الأجهزة اللوحية والمزيد.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="order.php" class="btn btn-primary btn-lg px-4">احجز الآن</a>
+                <a href="costmer.php" class="btn btn-primary btn-lg px-4">عرض الطلبات</a>
+            </div>
         </div>
     </section>
 
@@ -32,27 +79,27 @@
     <section class="services py-5">
         <div class="container">
             <h2 class="text-center mb-4">خدماتنا</h2>
-            <div class="row">
+            <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="card shadow-sm service-card">
-                        <div class="card-body">
-                            <h3 class="card-title text-primary">إصلاح الشاشات</h3>
+                    <div class="card shadow-sm h-100 service-card">
+                        <div class="card-body text-center">
+                            <h3 class="card-title text-primary mb-3">إصلاح الشاشات</h3>
                             <p class="card-text">إصلاح واستبدال شاشات الهواتف الذكية التالفة بأعلى جودة.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card shadow-sm service-card">
-                        <div class="card-body">
-                            <h3 class="card-title text-primary">صيانة البطارية</h3>
+                    <div class="card shadow-sm h-100 service-card">
+                        <div class="card-body text-center">
+                            <h3 class="card-title text-primary mb-3">صيانة البطارية</h3>
                             <p class="card-text">استبدال وصيانة البطاريات لضمان أفضل أداء لجهازك.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card shadow-sm service-card">
-                        <div class="card-body">
-                            <h3 class="card-title text-primary">إصلاح مشاكل النظام</h3>
+                    <div class="card shadow-sm h-100 service-card">
+                        <div class="card-body text-center">
+                            <h3 class="card-title text-primary mb-3">إصلاح مشاكل النظام</h3>
                             <p class="card-text">حل مشاكل البرمجيات والتحديثات لضمان عمل جهازك بكفاءة.</p>
                         </div>
                     </div>
@@ -62,18 +109,20 @@
     </section>
 
     <!-- قسم شهادات العملاء -->
-    <section class="testimonials py-5">
+    <section class="testimonials py-5 bg-light">
         <div class="container">
             <h2 class="text-center mb-4">ماذا يقول عملاؤنا</h2>
-            <div class="row">
+            <div class="row g-4">
                 <div class="col-md-6">
-                    <blockquote class="blockquote text-center">
-                        <p class="mb-0">خدمة رائعة وسريعة! تم إصلاح هاتفي في غضون ساعة واحدة فقط.</p>
+                    <blockquote class="blockquote bg-white p-4 rounded shadow-sm">
+                        <p class="mb-0">خدمة رائعة وسريعة! تم إصلاح هاتفي في ساعة واحدة.</p>
+                        <footer class="blockquote-footer mt-2">عميل سعيد</footer>
                     </blockquote>
                 </div>
                 <div class="col-md-6">
-                    <blockquote class="blockquote text-center">
-                        <p class="mb-0">أفضل مكان لصيانة الأجهزة، خدمات ممتازة وبأسعار معقولة.</p>
+                    <blockquote class="blockquote bg-white p-4 rounded shadow-sm">
+                        <p class="mb-0">أفضل مكان لصيانة الأجهزة، خدمات ممتازة  .</p>
+                        <footer class="blockquote-footer mt-2">عميل راضٍ</footer>
                     </blockquote>
                 </div>
             </div>
@@ -83,7 +132,7 @@
     <!-- الفوتر -->
     <footer class="bg-dark text-white text-center py-3">
         <div class="container">
-            <p>شاكرين لزيارتكم</p>
+            <p>&copy; 2024 صيانة الأجهزة الذكية. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 

@@ -35,6 +35,7 @@ if (isset($_POST['submit'])) {
 <html lang="ar">
 
 <head>
+    
     <link rel="stylesheet" href="test.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,27 +43,70 @@ if (isset($_POST['submit'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+        }
 
-<section class="login-form py-5">
-    <div class="container">
+        .login-section {
+            background-image: url('https://t3.ftcdn.net/jpg/05/19/73/36/360_F_519733648_tSMSHwqxw3TrbgFSXNKJVKncdkC0siTq.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-form {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+  
+
+    </style>
+</head>
+
+<body dir="rtl">
+
+<section class="login-section">
+    <div class="login-form">
         <h2 class="text-center mb-4">تسجيل الدخول</h2>
-        <form action="login.php" method="post" class="p-4 border rounded shadow-sm">
-            <div class="mb-3">
-                <label for="username" class="form-label">اسم المستخدم</label>
-                <input type="text" id="username" name="username" class="form-control" required>
+        <form action="login.php" method="post">
+            <!-- حقل اسم المستخدم -->
+            <div class="mb-3 input-group">
+                <span class="input-group-text"><i class='bx bxs-user'></i></span>
+                <input type="text" id="username" name="username" class="form-control" placeholder="اسم المستخدم أو البريد الإلكتروني" required>
             </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">كلمة المرور</label>
-                <input type="password" id="password" name="password" class="form-control" required>
+
+            <!-- حقل كلمة المرور -->
+            <div class="mb-3 input-group">
+                <span class="input-group-text"><i class='bx bxs-lock-alt'></i></span>
+                <input type="password" id="password" name="password" class="form-control" placeholder="كلمة المرور" required>
             </div>
-            <input type="submit" name="submit" value="enter">
-            <?php echo '<label>' . $ms . '</label>'; ?>
+
+            <!-- رسالة خطأ -->
+            <?php if (!empty($ms)): ?>
+                <div class="alert alert-danger text-center">
+                    <?php echo $ms; ?>
+                </div>
+            <?php endif; ?>
+
+            <!-- زر تسجيل الدخول -->
+            <div class="d-flex justify-content-center">
+                <button type="submit" name="submit" class="btn btn-primary btn-lg custom-btn">تسجيل دخول</button>
+            </div>
         </form>
+        <div class="text-center mt-3">
+            <p>ليس لديك حساب؟ <a href="singup.php">إنشاء حساب</a></p>
+        </div>
     </div>
 </section>
 
-<a href="singup.php">ليس لديك حساب؟</a><br><br>
 
 <footer class="bg-dark text-white text-center py-3">
     <div class="container">
